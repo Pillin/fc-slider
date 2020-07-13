@@ -6,6 +6,11 @@ const Container = styled.section`
   flex-direction: column;
   align-items: center;
   min-width: 250px;
+
+  @media (min-width: 679px) {
+    flex-direction: row;
+    min-width: 100vw;
+  }
 `;
 
 const Paragraph = styled.p`
@@ -37,18 +42,29 @@ const Img = styled.img`
   height: 250px;
 `;
 
+const Content = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 679px) {
+    width: calc(100% - 350px);
+  }
+`;
+
 const Card = (props) => {
   const { srcImg, description, name, job } = props;
   return (
     <Container>
       <ImgContainer>
-        {" "}
         <Img src={srcImg} />
       </ImgContainer>
 
-      <Paragraph>{description}</Paragraph>
-      <Title>{name}</Title>
-      <Subtitle>{job}</Subtitle>
+      <Content>
+        <Paragraph>{description}</Paragraph>
+        <Title>{name}</Title>
+        <Subtitle>{job}</Subtitle>
+      </Content>
     </Container>
   );
 };

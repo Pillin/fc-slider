@@ -14,9 +14,16 @@ const Container = styled.section`
   justify-content: center;
   width: 100vw;
   height: 100vh;
-
+  max-width: 100%;
   .swiper-slide {
     min-width: 320px;
+  }
+
+  @media (min-width: 679px) {
+    .swiper-slide {
+      min-width: calc(100vw - 1px);
+      padding: 0px 8px;
+    }
   }
 `;
 
@@ -33,11 +40,12 @@ export default function App() {
       <Container>
         <Swiper
           spaceBetween={50}
-          slidesPerView={3}
+          slidesPerView={1}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
         >
           <SwiperSlide>
+            <Card {...props} />
             <Card {...props} />
           </SwiperSlide>
         </Swiper>
